@@ -1,15 +1,16 @@
 import PageWrapper from "../../components/Layout/PageWrapper";
-import { server } from "../../config";
+import { apiServer, server } from "../../config";
 import EventContent from "../../components/Events/EventContent";
 import EventRegisterModal from "components/Modals/EventRegisterModal";
 import EventHero from "components/Heros/EventHero";
-import { useState, useEffect } from "react";
-import axios from "axios";
+import qs from "qs";
 
 const Event = ({ event }) => {
+  const img_url = apiServer + event.attributes.image.data.attributes.url;
+
   return (
     <PageWrapper>
-      <EventHero img_url={event.img_url} title={event.name} />
+      <EventHero img_url={img_url} />
       <div className="container mx-auto">
         <EventContent event={event} />
       </div>
@@ -18,10 +19,17 @@ const Event = ({ event }) => {
   );
 };
 export async function getServerSideProps(ctx) {
-  // Get event by id
-  const res = await fetch(`${server}/api/events/${ctx.query.id}`);
+  const query = qs.stringify(
+    {
+      populate: "*",
+    },
+    {
+      encodeValuesOnly: true,
+    }
+  );
+  const res = await fetch(`${server}/api/events/${ctx.query.id}?${query}`);
   const json = await res.json();
-  const { event } = json;
+  const event = json.data;
   return {
     props: { event },
   };

@@ -1,6 +1,6 @@
 import React from "react";
 
-function EventHero({ title, img_url }) {
+function EventHero({ img_url }) {
   const style = {
     backgroundImage: img_url ? `url(${img_url})` : `url(/basketball-court.svg)`,
   };

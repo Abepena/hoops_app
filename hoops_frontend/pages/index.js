@@ -6,6 +6,7 @@ import PageWrapper from "../components/Layout/PageWrapper";
 import { server } from "../config";
 import IndexHero from "components/Heros/IndexHero";
 import ContactModal from "components/Modals/ContactModal";
+import qs from "qs";
 
 export default function Home({ events }) {
   return (
@@ -23,9 +24,30 @@ export default function Home({ events }) {
 }
 
 export async function getStaticProps() {
-  const res = await fetch(`${server}/api/events/upcoming`);
+  const today = new Date();
+  const query = qs.stringify(
+    {
+      fields: ["name", "date", "cost"],
+      populate: ["location"],
+      filters: {
+        date: {
+          $gte: today,
+        },
+      },
+      sort: ["date"],
+      pagination: {
+        start: 0,
+        limit: 5,
+      },
+    },
+    {
+      encodeValuesOnly: true,
+    }
+  );
+
+  const res = await fetch(`${server}/api/events?${query}`);
   const json = await res.json();
-  const { events } = json;
+  const events = json.data;
 
   return {
     props: { events },

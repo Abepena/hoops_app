@@ -5,9 +5,10 @@ import { useJsApiLoader } from "@react-google-maps/api";
 import EventSignupModal from "components/Modals/EventRegisterModal";
 
 function EventContent({ event }) {
+  const { lat, lng } = event.attributes.location.data.attributes;
   const center = {
-    lat: event.location.lat,
-    lng: event.location.lng,
+    lat,
+    lng,
   };
 
   const { isLoaded } = useJsApiLoader({
