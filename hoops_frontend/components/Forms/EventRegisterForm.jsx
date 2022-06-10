@@ -2,8 +2,9 @@ import { Formik, Form } from "formik";
 import { useState } from "react";
 import { registrationSteps } from "components/Events/validationSchemas";
 import { FormikWizard } from "formik-wizard-form";
+import { useUserContext } from "contexts/UserContextProvider";
 
-const steps = ["register", "waiver", "confirm-and-pay"];
+const { user } = useUserContext();
 
 const formInitialValues = {
   firstName: "",
@@ -13,10 +14,13 @@ const formInitialValues = {
   acceptedWaiver: false,
 };
 
-
-
-const handleSubmit = ( values ) => {
-  setTimeout(alert(JSON.stringify(values, null, 2)), 400);
+const handleSubmit = (values) => {
+  setTimeout(
+    alert(
+      JSON.stringify({ ...values, user_id: user ? user.id : null }, null, 2)
+    ),
+    400
+  );
 };
 
 function EventRegisterForm() {

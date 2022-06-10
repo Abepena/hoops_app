@@ -1,3 +1,4 @@
+import { UserProvider } from "contexts/UserContextProvider";
 import Document, { Html, Head, Main, NextScript } from "next/document";
 
 

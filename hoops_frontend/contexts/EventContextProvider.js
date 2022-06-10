@@ -1,6 +1,7 @@
 import { createContext, useContext, useState } from "react";
 
 const EventContext = createContext(undefined);
+
 const useEventContext = () => {
   const context = useContext(EventContext);
   if (!context) {
@@ -11,18 +12,14 @@ const useEventContext = () => {
 };
 
 const EventProvider = (props) => {
-  const [event, setEvent] = useState(props.event || {});
-  const [location, setLocation] = useState(
-    props.event.attributes.location || {}
-  );
-  const [image, setImage] = useState(props.event.attributes.image || {});
+  const [event, setEvent] = useState(props.event);
+  const { image, location, participants } = event.attributes;
 
   const EventContextValue = {
     event,
     location,
-    setLocation,
+    participants,
     image,
-    setImage,
   };
 
   return <EventContext.Provider value={EventContextValue} {...props} />;
