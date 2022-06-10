@@ -28,7 +28,7 @@ export async function getStaticProps() {
   const query = qs.stringify(
     {
       fields: ["name", "date", "cost"],
-      populate: ["location"],
+      populate: ["location", "image"],
       filters: {
         date: {
           $gte: today,

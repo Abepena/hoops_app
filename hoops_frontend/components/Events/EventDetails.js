@@ -3,9 +3,11 @@ import { CalendarIcon } from "@heroicons/react/outline";
 import Moment from "react-moment";
 import { LocationMarkerIcon, TicketIcon } from "@heroicons/react/outline";
 import formatCost from "/utils/formatCost";
+import { useEventContext } from "contexts/EventContextProvider";
 
-function EventDetails({ event }) {
-  const { name, location, cost, date, description} = event.attributes;
+function EventDetails() {
+  const { event, location} = useEventContext();
+  const { name, cost, date, description } = event.attributes;
   return (
     <div className="event-details p-2 ">
       <div className="mx-4 flex items-center py-2 border-b-2 border-neutral-content mb-2">

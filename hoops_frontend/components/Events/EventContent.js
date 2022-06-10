@@ -2,10 +2,11 @@ import React from "react";
 import EventDetails from "../../components/Events/EventDetails";
 import EventMap from "../../components/Events/EventMap";
 import { useJsApiLoader } from "@react-google-maps/api";
-import EventSignupModal from "components/Modals/EventRegisterModal";
+import { useEventContext } from "contexts/EventContextProvider";
 
-function EventContent({ event }) {
-  const { lat, lng } = event.attributes.location.data.attributes;
+function EventContent() {
+  const { location, event } = useEventContext();
+  const { lat, lng } = location.data.attributes;
   const center = {
     lat,
     lng,
@@ -17,16 +18,18 @@ function EventContent({ event }) {
     libraries: ["places"],
   });
   return (
-    <main className="relative -mt-10 rounded-2xl bg-white text-neutral shadow-md overflow-clip mx-4">
-      <section className="grid min-h-[500px]">
-        <section className="grid lg:grid-cols-2 w-full">
-          <div className="details">
-            <EventDetails event={event} />
-          </div>
-          {isLoaded ? <EventMap center={center} /> : <></>}
+    <div className="container mx-auto">
+      <main className="relative -mt-10 rounded-2xl bg-white text-neutral shadow-md overflow-clip mx-4">
+        <section className="grid min-h-[500px]">
+          <section className="grid lg:grid-cols-2 w-full">
+            <div className="details">
+              <EventDetails />
+            </div>
+            {isLoaded ? <EventMap center={center} /> : <></>}
+          </section>
         </section>
-      </section>
-    </main>
+      </main>
+    </div>
   );
 }
 

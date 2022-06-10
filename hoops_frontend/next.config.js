@@ -1,6 +1,6 @@
 module.exports = {
   images: {
-    domains: ["source.unsplash.com"],
+    domains: ["source.unsplash.com", "localhost"],
   },
   async rewrites() {
     return [

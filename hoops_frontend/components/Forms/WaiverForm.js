@@ -1,9 +1,15 @@
+import { Form } from "formik";
 import React from "react";
 import { WaiverCheckbox } from "./Fields";
 
 function WaiverForm() {
   return (
-    <>
+    <Form id="waiver">
+      <ul className="steps w-full mx-auto">
+        <li className="step step-success">Register</li>
+        <li className="step step-success">Waiver</li>
+        <li className="step">Confirm and Pay</li>
+      </ul>
       <section className="waiver-info w-full ">
         <h2 className="text-2xl mb-2">Waiver</h2>
         <p className="waiver-content bg-white p-4 text-neutral  rounded">
@@ -36,7 +42,7 @@ function WaiverForm() {
         label="I have read and accepted the terms of the waiver."
         name="acceptedWaiver"
       />
-    </>
+    </Form>
   );
 }
 
