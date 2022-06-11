@@ -1,6 +1,5 @@
 import Router from "next/router";
 import ProgressBar from "@badrap/bar-of-progress";
-import { SessionProvider } from "next-auth/react";
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "/styles/tailwind.css";
@@ -17,12 +16,8 @@ Router.events.on("routeChangeStart", progress.start);
 Router.events.on("routeChangeComplete", progress.finish);
 Router.events.on("routeChangeError", progress.finish);
 
-function MyApp({ Component, pageProps: { session, pageProps } }) {
-  return (
-    <SessionProvider session={session}>
-      <Component {...pageProps} />
-    </SessionProvider>
-  );
+function MyApp({ Component, pageProps: { session, ...pageProps } }) {
+  return <Component {...pageProps} />;
 }
 
 export default MyApp;

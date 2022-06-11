@@ -5,7 +5,7 @@ import { useJsApiLoader } from "@react-google-maps/api";
 import { useEventContext } from "contexts/EventContextProvider";
 
 function EventContent() {
-  const { location, event } = useEventContext();
+  const { location } = useEventContext();
   const { lat, lng } = location.data.attributes;
   const center = {
     lat,

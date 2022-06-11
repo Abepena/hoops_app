@@ -4,7 +4,7 @@ import EventList from "../components/Events/EventList";
 import Header from "../components/Header";
 
 function Locations() {
-  return (npm run 
+  return (
     <div className="">
       <Header />
       <div className="container mx-auto">

@@ -2,24 +2,20 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import Moment from "react-moment";
-import costToString from "utils/formatCost";
-
-import { apiServer } from "/config";
 
 function SmallCard({ event }) {
   const { id } = event;
   const { name, date, location, image } = event.attributes;
-  console.log(event.attributes);
 
   return (
     <Link href={`/events/${id}`}>
       <a className="hover:scale-105 mb-2 md:mb-0 cursor-pointer hover:opacity-80  transition transform duration-200 ease-in-out">
-        <div className="card bg-base-300 shadow-md hover:shadow-2xl w-96 sm:w-full">
+        <div className="card bg-base-100 shadow-md hover:shadow-2xl w-96 sm:w-full">
           <figure className="h-96 relative">
             <Image
               layout="fill"
               className="h-full w-full object-cover"
-              src={`${apiServer + image.data.attributes.url}`}
+              src={`${process.env.NEXT_PUBLIC_API_URL + image.data.attributes.url}`}
               alt="event image"
             />
           </figure>

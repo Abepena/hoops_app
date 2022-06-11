@@ -1,10 +1,5 @@
-import { Formik, Form } from "formik";
-import { useState } from "react";
 import { registrationSteps } from "components/Events/validationSchemas";
 import { FormikWizard } from "formik-wizard-form";
-import { useUserContext } from "contexts/UserContextProvider";
-
-const { user } = useUserContext();
 
 const formInitialValues = {
   firstName: "",
@@ -17,7 +12,7 @@ const formInitialValues = {
 const handleSubmit = (values) => {
   setTimeout(
     alert(
-      JSON.stringify({ ...values, user_id: user ? user.id : null }, null, 2)
+      JSON.stringify({ ...values}, null, 2)
     ),
     400
   );

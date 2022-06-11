@@ -1,9 +1,6 @@
 import Head from "next/head";
-import Banner from "../components/Layout/Banner";
 import Main from "../components/Layout/Main";
-import Link from "next/link";
 import PageWrapper from "../components/Layout/PageWrapper";
-import { server } from "../config";
 import IndexHero from "components/Heros/IndexHero";
 import ContactModal from "components/Modals/ContactModal";
 import qs from "qs";
@@ -45,10 +42,11 @@ export async function getStaticProps() {
     }
   );
 
-  const res = await fetch(`${server}/api/events?${query}`);
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/api/events?${query}`
+  );
   const json = await res.json();
   const events = json.data;
-
   return {
     props: { events },
   };

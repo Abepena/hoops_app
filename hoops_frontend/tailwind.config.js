@@ -7,8 +7,10 @@ module.exports = {
   ],
   plugins: [require("tailwind-scrollbar-hide"), require("daisyui")],
   theme: {
-    colors: {
-      success: "#37D399",
+    extend: {
+      colors: {
+        success: "#37D399",
+      },
     },
   },
 };

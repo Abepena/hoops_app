@@ -3746,6 +3746,10 @@ body[dir="rtl"] .checkbox:checked,
   margin-right: 0.75rem;
 }
 
+.mb-4 {
+  margin-bottom: 1rem;
+}
+
 .mb-2 {
   margin-bottom: 0.5rem;
 }
@@ -3774,10 +3778,6 @@ body[dir="rtl"] .checkbox:checked,
   margin-top: 0.25rem;
 }
 
-.mb-4 {
-  margin-bottom: 1rem;
-}
-
 .mb-5 {
   margin-bottom: 1.25rem;
 }
@@ -3792,6 +3792,10 @@ body[dir="rtl"] .checkbox:checked,
 
 .mb-8 {
   margin-bottom: 2rem;
+}
+
+.mb-6 {
+  margin-bottom: 1.5rem;
 }
 
 .mt-3 {
@@ -4079,6 +4083,11 @@ body[dir="rtl"] .checkbox:checked,
   border-color: hsl(var(--b3, var(--b2)) / var(--tw-border-opacity));
 }
 
+.bg-base-100 {
+  --tw-bg-opacity: 1;
+  background-color: hsl(var(--b1) / var(--tw-bg-opacity));
+}
+
 .bg-base-300 {
   --tw-bg-opacity: 1;
   background-color: hsl(var(--b3, var(--b2)) / var(--tw-bg-opacity));
@@ -4087,11 +4096,6 @@ body[dir="rtl"] .checkbox:checked,
 .bg-base-200 {
   --tw-bg-opacity: 1;
   background-color: hsl(var(--b2, var(--b1)) / var(--tw-bg-opacity));
-}
-
-.bg-base-100 {
-  --tw-bg-opacity: 1;
-  background-color: hsl(var(--b1) / var(--tw-bg-opacity));
 }
 
 .bg-transparent {
