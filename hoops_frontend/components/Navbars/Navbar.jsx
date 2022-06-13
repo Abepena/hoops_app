@@ -1,7 +1,7 @@
 import NavbarBrand from "./NavbarBrand";
 import NavbarSearch from "./NavbarSearch";
 
-function NavbarIndex() {
+function Navbar() {
   return (
     <div className="navbar bg-base-100">
       <div className="flex-1">
@@ -37,4 +37,4 @@ function NavbarIndex() {
     </div>
   );
 }
-export default NavbarIndex;
+export default Navbar;

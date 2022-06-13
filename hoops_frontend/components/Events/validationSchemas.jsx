@@ -33,3 +33,20 @@ export const registrationSteps = [
     component: PaymentForm,
   },
 ];
+
+export const contactValidation = Yup.object({
+  firstName: Yup.string()
+    .max(15, "Must be 15 characters or less")
+    .required("Required"),
+  lastName: Yup.string()
+    .max(20, "Must be 20 characters or less")
+    .required("Required"),
+  email: Yup.string().email("Invalid email address").required("Required"),
+  phone: Yup.string().matches(phoneRegExp, "Phone number is not valid"),
+  subject: Yup.string()
+    .max(100, "Must be 100 characters or less")
+    .required("Required"),
+  message: Yup.string()
+    .max(1000, "Must be 1000 characters or less")
+    .required("Required"),
+});

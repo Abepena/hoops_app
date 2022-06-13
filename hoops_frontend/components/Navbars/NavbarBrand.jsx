@@ -5,7 +5,7 @@ function NavbarBrand() {
   return (
     <Link href="/">
       <a className="btn btn-ghost normal-case text-xl">
-        <i className="fa-solid fa-basketball text-3xl mr-2"></i>
+        <i className="fa-solid fa-basketball text-3xl mr-2 text-orange-600"></i>
         Pure Hoops
       </a>
     </Link>

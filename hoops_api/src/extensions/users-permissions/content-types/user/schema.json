@@ -68,6 +68,15 @@
       "relation": "oneToMany",
       "target": "api::event.event",
       "mappedBy": "organizer"
+    },
+    "firstName": {
+      "type": "string"
+    },
+    "lastName": {
+      "type": "string"
+    },
+    "dob": {
+      "type": "date"
     }
   }
 }

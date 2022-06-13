@@ -8,11 +8,8 @@ function EventRegisterModal({ cost }) {
   return (
     <div className="">
       <input type="checkbox" id="event-signup-modal" className="modal-toggle" />
-      <label htmlFor="event-signup-modal" className="modal cursor-pointer">
+      <label htmlFor="event-signup-modal" className="modal modal-bottom sm:modal-middle cursor-pointer">
         <label className="modal-box relative" htmlFor="">
-          {/* Modal Steps */}
-
-          {/* User Info + Guest Section */}
           <EventRegisterForm />
         </label>
       </label>

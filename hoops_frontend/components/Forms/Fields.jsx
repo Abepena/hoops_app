@@ -1,5 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { useField } from "formik";
+
+const getFieldColor = (meta) => {
+  if (meta.touched && meta.error) {
+    return "error";
+  } else if (meta.touched) {
+    return "success";
+  } else {
+    return "bordered";
+  }
+};
 
 export const TextInput = ({ label, ...props }) => {
   // useField() returns [formik.getFieldProps(), formik.getFieldMeta()]
@@ -11,7 +21,32 @@ export const TextInput = ({ label, ...props }) => {
       <label className="label" htmlFor={props.id || props.name}>
         <span className="label-text">{label}</span>
       </label>
-      <input className="text-input" {...field} {...props} />
+      <input
+        className={`input input-bordered border-${getFieldColor(meta)}`}
+        {...field}
+        {...props}
+      />
+      {meta.touched && meta.error ? (
+        <div className="error text-error text-sm ml-1 mt-1">{meta.error}</div>
+      ) : null}
+    </div>
+  );
+};
+
+export const MessageTextArea = ({ label, ...props }) => {
+  const [field, meta] = useField(props);
+
+  return (
+    <div className="form-control">
+      <label className="label" htmlFor={props.id || props.name}>
+        <span className="label-text">{label}</span>
+      </label>
+      <textarea
+        rows="4"
+        className={`textarea textarea-${getFieldColor(meta)} text-input`}
+        {...field}
+        {...props}
+      />
       {meta.touched && meta.error ? (
         <div className="error text-error text-sm ml-1 mt-1">{meta.error}</div>
       ) : null}

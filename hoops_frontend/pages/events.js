@@ -6,7 +6,9 @@ function Events({ events }) {
   return (
     <PageWrapper>
       <div className="container mx-auto px-3">
-        <h1 className="text-3xl p-4 font-semibold border-b-2 mb-4">Events</h1>
+        <h1 className="text-3xl p-4 font-semibold border-b-2 border-neutral-content mb-4">
+          Events
+        </h1>
         <EventList events={events} />
       </div>
     </PageWrapper>

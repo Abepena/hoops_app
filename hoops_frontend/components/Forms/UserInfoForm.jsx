@@ -18,14 +18,12 @@ function UserInfoForm() {
             label="First Name"
             name="firstName"
             placeholder="John"
-            className="input input-bordered"
           />
           <TextInput
             type="text"
             label="Last Name"
             name="lastName"
             placeholder="Doe"
-            className="input input-bordered"
           />
         </div>
         <div className="grid gap-2 mb-4">
@@ -34,14 +32,12 @@ function UserInfoForm() {
             label="Email"
             name="email"
             placeholder="john.doe@example.com"
-            className="input input-bordered"
           />
           <TextInput
             type="phone"
             label="Phone Number"
             name="phone"
             placeholder="800-500-5555"
-            className="input input-bordered"
           />
         </div>
       </section>

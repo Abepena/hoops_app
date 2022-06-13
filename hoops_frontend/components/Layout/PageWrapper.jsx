@@ -1,12 +1,12 @@
 import React from "react";
 import Header from "./Header";
 import Footer from "./Footer";
-import IndexNavbar from "components/Navbars/NavbarIndex";
+import Navbar from "components/Navbars/Navbar";
 
 function PageWrapper({ children }) {
   return (
     <div className="mx-auto h-full "> 
-      <IndexNavbar />
+      <Navbar />
       {children}
       <Footer />
     </div>

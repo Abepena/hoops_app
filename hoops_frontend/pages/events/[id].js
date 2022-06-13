@@ -4,18 +4,20 @@ import EventRegisterModal from "components/Modals/EventRegisterModal";
 import EventHero from "components/Heros/EventHero";
 import { EventProvider } from "contexts/EventContextProvider";
 import qs from "qs";
+import { getImageURL } from "utils/getImageURLs";
+import { WizardProvider } from "contexts/WizardContextProvider";
 
 const Event = ({ event }) => {
-  const img_url =
-    process.env.NEXT_PUBLIC_API_URL +
-    event.attributes.image.data.attributes.url;
+  const img_url = getImageURL(event.attributes.image);
 
   return (
     <EventProvider event={event}>
       <PageWrapper>
         <EventHero img_url={img_url} />
         <EventContent />
-        <EventRegisterModal />
+        <WizardProvider>
+          <EventRegisterModal />
+        </WizardProvider>
       </PageWrapper>
     </EventProvider>
   );
@@ -29,9 +31,8 @@ export async function getServerSideProps(ctx) {
       encodeValuesOnly: true,
     }
   );
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/api/events/${ctx.query.id}?${query}`
-  );
+  const url = `${process.env.NEXT_PUBLIC_API_URL}/api/events/${ctx.query.id}?${query}`;
+  const res = await fetch(url);
   const json = await res.json();
   const event = json.data;
   return {

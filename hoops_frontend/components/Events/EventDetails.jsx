@@ -2,7 +2,6 @@ import React from "react";
 import { CalendarIcon } from "@heroicons/react/outline";
 import Moment from "react-moment";
 import { LocationMarkerIcon, TicketIcon } from "@heroicons/react/outline";
-import formatCost from "/utils/formatCost";
 import { useEventContext } from "contexts/EventContextProvider";
 
 function EventDetails() {
@@ -30,7 +29,7 @@ function EventDetails() {
         <div className="flex justify-between items-center">
           <span className="flex">
             <TicketIcon className="h-6 mr-2" />
-            {cost ? formatCost(cost) : "Free"}
+            {cost ? `$${cost.toFixed(2)}` : "Free"}
           </span>
           <label
             htmlFor="event-signup-modal"

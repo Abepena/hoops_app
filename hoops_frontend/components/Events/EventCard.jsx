@@ -1,7 +1,6 @@
 import React from "react";
 import Moment from "react-moment";
 import Link from "next/link";
-import formatCost from "utils/formatCost";
 import Image from "next/image";
 
 
@@ -13,9 +12,9 @@ function EventCard({ event: { id, attributes } }) {
   return (
     <Link href={`/events/${id}`}>
       <a className="hover:scale-105 mb-2 md:mb-0 cursor-pointer hover:shadow-md hover:opacity-80 transition transform duration-200 ease-in-out">
-        <div className="bg-base-300 shadow-2xl card w-96 sm:w-full">
+        <div className="bg-base-300 shadow-2xl card w-80 sm:w-full">
           <figure className="h-96 relative">
-            <Image
+             <Image
             layout="fill"
             objectFit="cover"
               className="h-full w-full"
@@ -29,7 +28,7 @@ function EventCard({ event: { id, attributes } }) {
             <Moment fromNow className="text-xs text-gray-400" date={date} />
             <div className="card-actions items-end justify-end">
               <div className="badge badge-success">{`${
-                cost ? formatCost(cost) : "Free"
+                cost ? `$${cost.toFixed(2)}` : "Free"
               }`}</div>
             </div>
           </div>

@@ -6,6 +6,7 @@ import ContactModal from "components/Modals/ContactModal";
 import qs from "qs";
 
 export default function Home({ events }) {
+  //TODO: Fix small card margins
   return (
     <PageWrapper>
       <Head>

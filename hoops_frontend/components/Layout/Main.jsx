@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from "react";
 import LargeCard from "./LargeCard";
 import MediumCard from "./MediumCard";
 import SmallCard from "components/Cards/SmallCard";
@@ -13,15 +12,13 @@ const training_categories = [
   { img: "womens-basketball.jpg", title: "Coed Leagues" },
 ];
 
-const court_img = "/basketball_court.svg";
-
 
 function Main({ upcomingEvents }) {
   const scrollRef = useHorizontalScroll();
 
   return (
-    <div className="relative -mt-10 w-11/12 container mx-auto">
-      <div className="mx-3 p-6 relative rounded-lg shadow-2xl bg-base-200 mb-8">
+    <div className="relative  -mt-10 container mx-auto">
+      <div className="mx-3 p-6 relative rounded-lg mb-8">
         <h2 className="font-semibold text-3xl border-b-2 border-neutral-content pb-4">
           Upcoming events
         </h2>
