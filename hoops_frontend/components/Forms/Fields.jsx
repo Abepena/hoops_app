@@ -42,8 +42,8 @@ export const MessageTextArea = ({ label, ...props }) => {
         <span className="label-text">{label}</span>
       </label>
       <textarea
-        rows="4"
-        className={`textarea textarea-${getFieldColor(meta)} text-input`}
+        rows="3"
+        className={`textarea textarea-bordered text-input`}
         {...field}
         {...props}
       />

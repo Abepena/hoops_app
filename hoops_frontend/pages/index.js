@@ -1,23 +1,24 @@
 import Head from "next/head";
 import Main from "../components/Layout/Main";
-import PageWrapper from "../components/Layout/PageWrapper";
 import IndexHero from "components/Heros/IndexHero";
 import ContactModal from "components/Modals/ContactModal";
 import qs from "qs";
+import Drawer from "components/Navbars/Drawer";
 
 export default function Home({ events }) {
-  //TODO: Fix small card margins
   return (
-    <PageWrapper>
+    <>
       <Head>
         <title>Pure Hoops</title>
         <meta name="description" content="Pure Hoops Basketball Academy" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <IndexHero />
-      <Main upcomingEvents={events} />
-      <ContactModal />
-    </PageWrapper>
+      <Drawer>
+        <IndexHero />
+        <Main upcomingEvents={events} />ter
+        <ContactModal />
+      </Drawer>
+    </>
   );
 }
 

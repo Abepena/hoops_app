@@ -6,7 +6,7 @@ function Footer() {
   const date = new Date();
   return (
     <>
-      <footer className="footer px-10 py-4  mt-10 border-t bg-base-200 text-base-content border-base-300">
+      <footer className="footer px-10 py-4 border-t bg-base-200 text-base-content border-base-300">
         {/* Logo + copyright */}
         <div className="grid sm:grid-flow-col gap-6 justify-self-center items-center">
           <div className="grid grid-flow-col gap-6 items-center">

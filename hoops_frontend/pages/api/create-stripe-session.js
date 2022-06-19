@@ -3,17 +3,12 @@ import qs from "qs";
 const stripe = require("stripe")(process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY);
 
 async function CreateStripeSession(req, res) {
-  const { item, participant } = req.body;
-
-  const query = qs.stringify({
-    status: "success",
-    participant,
-  });
+  const { item, participant, endpoint } = req.body;
 
   const redirectURL =
     process.env.NODE_ENV === "development"
-      ? "http://localhost:3000/checkout"
-      : "https://pure-hoops.vercel.app/checkout";
+      ? `http://localhost:3000/`
+      : `https://pure-hoops.vercel.app/`;
 
   const transformedItem = {
     price_data: {
@@ -32,10 +27,17 @@ async function CreateStripeSession(req, res) {
     payment_method_types: ["card"],
     line_items: [transformedItem],
     mode: "payment",
-    success_url: redirectURL + `?${query}`,
-    cancel_url: redirectURL + "?status=cancel",
+    customer_email: participant.email,
+    success_url:
+      redirectURL +
+      `/order?status=success&next=${endpoint}&session_id={CHECKOUT_SESSION_ID}`,
+    cancel_url:
+      redirectURL +
+      `/order?status=cancel&next=${endpoint}&session_id={CHECKOUT_SESSION_ID}`,
     metadata: {
       images: item.image,
+      item: JSON.stringify(item, null, 2),
+      participant: JSON.stringify(participant, null, 2),
     },
   });
 

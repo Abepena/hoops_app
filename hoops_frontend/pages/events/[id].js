@@ -1,4 +1,3 @@
-import PageWrapper from "../../components/Layout/PageWrapper";
 import EventContent from "../../components/Events/EventContent";
 import EventRegisterModal from "components/Modals/EventRegisterModal";
 import EventHero from "components/Heros/EventHero";
@@ -6,19 +5,22 @@ import { EventProvider } from "contexts/EventContextProvider";
 import qs from "qs";
 import { getImageURL } from "utils/getImageURLs";
 import { WizardProvider } from "contexts/WizardContextProvider";
+import { ToastContainer } from "react-toastify";
+import Drawer from "components/Navbars/Drawer";
 
 const Event = ({ event }) => {
   const img_url = getImageURL(event.attributes.image);
 
   return (
     <EventProvider event={event}>
-      <PageWrapper>
+      <Drawer>
         <EventHero img_url={img_url} />
         <EventContent />
         <WizardProvider>
           <EventRegisterModal />
         </WizardProvider>
-      </PageWrapper>
+        <ToastContainer />
+      </Drawer>
     </EventProvider>
   );
 };

@@ -10,13 +10,20 @@ function LargeCard({ img }) {
         objectFit="cover"
         className="rounded-lg border"
       />
-      <div className="absolute top-12 right-12">
+      <div className="absolute top-12 right-12 max-w-xs">
         <div className="bg-base-100 shadow-xl p-5 rounded-lg">
-          <h3 className="text-2xl">Its time for some fun</h3>
-          <h4 className="mb-2 ">Reach out to get started</h4>
-          <label htmlFor="contact-modal" className="btn btn-secondary modal-button">
-            Contact Us
-          </label>
+          <div className="text-center">
+            <h3 className="text-2xl text-center">Its time for some fun</h3>
+            <h4 className="mb-2 ">Reach out to get started or if you have any questions</h4>
+          </div>
+          <div className="flex justify-center">
+            <label
+              htmlFor="contact-modal"
+              className="btn mx-auto btn-secondary modal-button"
+            >
+              Contact Us
+            </label>
+          </div>
         </div>
       </div>
     </section>

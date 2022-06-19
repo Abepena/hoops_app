@@ -7,7 +7,7 @@ export default function Component() {
       <>
         Signed in as {session.user.email} <br />
         Session Data: {"{" + JSON.stringify(session) + "}"}
-        <button className="btn btn-success" onClick={() => signOut()}>
+        <button className="btn " onClick={() => signOut()}>
           Sign out
         </button>
       </>

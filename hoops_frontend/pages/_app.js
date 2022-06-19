@@ -7,6 +7,8 @@ import "/styles/globals.css";
 
 import { SessionProvider } from "next-auth/react";
 
+import "react-toastify/dist/ReactToastify.css";
+
 const progress = new ProgressBar({
   size: 4,
   color: "#37D399",

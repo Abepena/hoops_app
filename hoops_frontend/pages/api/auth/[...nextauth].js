@@ -27,7 +27,6 @@ export default NextAuth({
         const data = await res.json();
         token.jwt = data.jwt;
         token.id = data.user.id;
-        console.log(data);
       }
       return token;
     },

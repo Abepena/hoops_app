@@ -5,8 +5,16 @@ export const WizardContext = createContext();
 export const WizardProvider = ({ children }) => {
   const [wizardState, setWizardState] = useState({});
   const [loading, setLoading] = useState(false);
+  const [finished, setFinished] = useState(false);
 
-  const value = { wizardState, setWizardState, loading, setLoading };
+  const value = {
+    wizardState,
+    setWizardState,
+    loading,
+    setLoading,
+    finished,
+    setFinished,
+  };
   return (
     <WizardContext.Provider value={value}>{children}</WizardContext.Provider>
   );
