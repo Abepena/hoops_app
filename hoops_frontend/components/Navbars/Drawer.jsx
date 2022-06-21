@@ -16,7 +16,7 @@ function Drawer({ children }) {
       <input id="navbar-drawer" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content flex flex-col">
         {/* <!-- Navbar --> */}
-        <div className="w-full navbar bg-base-300">
+        <div className="w-full navbar bg-base-100">
           <div className="flex-1 mx-2">
             <NavbarBrand />
           </div>
@@ -35,11 +35,22 @@ function Drawer({ children }) {
                   </a>
                 </li>
               ) : (
-                <Link href="/test">
-                  <li>
-                    <a className="btn btn-ghost ">Login</a>
-                  </li>
-                </Link>
+                <>
+                  <Link href="/login">
+                    <li>
+                      <a className="font-medium btn btn-outline btn-success">
+                        Login
+                      </a>
+                    </li>
+                  </Link>
+                  <Link href="/register">
+                    <li>
+                      <a className="font-medium ml-2 btn btn-outline rounded-lg">
+                        Register
+                      </a>
+                    </li>
+                  </Link>
+                </>
               )}
             </ul>
           </div>
@@ -49,18 +60,25 @@ function Drawer({ children }) {
         <Footer />
       </div>
       <div className="drawer-side">
-        <label for="navbar-drawer" className="drawer-overlay"></label>
+        <label htmlFor="navbar-drawer" className="drawer-overlay"></label>
         <ul className="menu p-4 overflow-y-auto w-80 bg-base-100">
           {/* <!-- Sidebar content here --> */}
 
           {session && status === "authenticated" ? (
             <UserDropdown />
           ) : (
-            <Link href="/test">
-              <li>
-                <a className="btn btn-ghost">Login</a>
-              </li>
-            </Link>
+            <>
+              <Link href="#">
+                <li className="hover-bordered">
+                  <a className="font-medium">Login</a>
+                </li>
+              </Link>
+              <Link href="/register">
+                <li className="hover-bordered">
+                  <a className=" font-medium">Register</a>
+                </li>
+              </Link>
+            </>
           )}
           <NavbarLinks />
         </ul>

@@ -11,7 +11,7 @@ function SmallCard({ event }) {
   return (
     <Link href={`/events/${id}`}>
       <a className="hover:scale-105 mb-2 md:mb-0 cursor-pointer hover:opacity-80  transition-all duration-300 ease-in-out">
-        <div className="card bg-base-200 shadow-md hover:shadow-2xl  w-80 sm:w-full">
+        <div className="card dark:bg-base-300 shadow-md hover:shadow-2xl  w-80 sm:w-full">
           <figure className="h-96 relative">
             <Image
               layout="fill"

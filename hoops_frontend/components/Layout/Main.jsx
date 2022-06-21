@@ -12,14 +12,13 @@ const training_categories = [
   { img: "womens-basketball.jpg", title: "Coed Leagues" },
 ];
 
-
 function Main({ upcomingEvents }) {
   const scrollRef = useHorizontalScroll();
 
   return (
-    <div className="relative  -mt-10 container mx-auto">
+    <div className="relative  -mt-10 container mx-auto bg-base-200">
       <div className="mx-3 p-6 relative rounded-lg mb-8">
-        <h2 className="font-semibold text-3xl border-b-2 border-neutral-content pb-4">
+        <h2 className="font-semibold text-3xl border-b-2 dark:border-neutral-content pb-4">
           Upcoming events
         </h2>
         <section className="pt-4 grid items-center justify-center md:grid-cols-2  xl:grid-cols-3 gap-6">
@@ -29,7 +28,7 @@ function Main({ upcomingEvents }) {
         </section>
       </div>
       <section className="mb-6">
-        <h2 className="text-3xl px-4 pb-4 font-semibold border-b-2 border-neutral-content  ">
+        <h2 className="text-3xl px-4 pb-4 font-semibold border-b-2 dark:border-neutral-content  ">
           Explore it all
         </h2>
         <div

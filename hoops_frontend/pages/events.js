@@ -6,8 +6,8 @@ import EventFilterDropdown from "components/Dropdowns/EventFilterDropDown";
 function Events({ events }) {
   return (
     <Drawer>
-      <div className="container mx-auto max-w-6xl xl:max-w-8xl mt-4">
-        <div className="header p-4 flex items-center border-b-2 border-neutral-content mb-4">
+      <div className="container mx-auto w-11/12 max-w-6xl xl:max-w-8xl mt-4">
+        <div className="header p-4 flex items-center border-b-2 dark:border-neutral-content mb-4">
           <h1 className="flex-1 text-3xl font-semibold">Events</h1>
           <EventFilterDropdown />
           {/* <div className="btn btn-ghost w-10">

@@ -15,7 +15,7 @@ export default function Home({ events }) {
       </Head>
       <Drawer>
         <IndexHero />
-        <Main upcomingEvents={events} />ter
+        <Main upcomingEvents={events} />
         <ContactModal />
       </Drawer>
     </>

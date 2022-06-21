@@ -12,7 +12,7 @@ function EventCard({ event: { id, attributes } }) {
   return (
     <Link href={`/events/${id}`}>
       <a className="hover:scale-105 mb-2 md:mb-0 cursor-pointer hover:shadow-md hover:opacity-80 transition duration-200 ease-in-out">
-        <div className="bg-base-300 shadow-2xl card max-w-xs sm:w-full">
+        <div className="dark:bg-base-300 shadow-2xl card max-w-xs sm:w-full">
           <figure className="h-96 sm:h-80 relative">
              <Image
             layout="fill"

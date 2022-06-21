@@ -22,7 +22,38 @@ export const TextInput = ({ label, ...props }) => {
         <span className="label-text">{label}</span>
       </label>
       <input
-        className={`input input-bordered border-${getFieldColor(meta)}`}
+        className={`input input-text input-bordered border-${getFieldColor(
+          meta
+        )}`}
+        {...field}
+        {...props}
+      />
+      {meta.touched && meta.error ? (
+        <div className="error text-error text-sm ml-1 mt-1">{meta.error}</div>
+      ) : null}
+    </div>
+  );
+};
+export const DatePicker = ({ label, ...props }) => {
+  const formatDate = (date) => {
+    let d = new Date(date);
+    let month = (d.getMonth() + 1).toString().padStart(2, '0');
+    let day = d.getDate().toString().padStart(2, '0');
+    let year = d.getFullYear();
+    return [year, month, day].join('-');
+  }
+  const [field, meta] = useField(props);
+  return (
+    <div className="form-control">
+      <label className="label" htmlFor={props.id || props.name}>
+        <span className="label-text">{label}</span>
+      </label>
+      <input
+        type="date"
+        max={formatDate(new Date())}
+        className={`text-input input input-bordered border-${getFieldColor(
+          meta
+        )}`}
         {...field}
         {...props}
       />
