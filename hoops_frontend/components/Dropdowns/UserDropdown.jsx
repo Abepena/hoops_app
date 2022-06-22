@@ -5,13 +5,14 @@ function UserDropdown({ end }) {
   const {
     data: {
       user: { image },
+      providerImage,
     },
   } = useSession();
   return (
     <div className={`dropdown ${end && "dropdown-end"}`}>
       <label tabIndex="0" className="btn btn-ghost btn-circle avatar">
         <div className="w-10 rounded-full">
-          <img src={image || "/default-avatar.png"} />
+          <img src={image || providerImage || "/default-avatar.png"} />
         </div>
       </label>
       <ul

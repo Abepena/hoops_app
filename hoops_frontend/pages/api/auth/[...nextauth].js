@@ -35,8 +35,7 @@ export default NextAuth({
           });
 
         const { user: data, jwt } = res.data;
-        if (!res.ok) {
-        }
+
         // If no error and we have user data, return it
         if (res.statusText === "OK" && data) {
           return { jwt, data };
@@ -51,28 +50,12 @@ export default NextAuth({
     signIn: "/login",
   },
   callbacks: {
-    // async jwt({ token, user, account, profile, isNewUser }) {
-    //   // Persist the OAuth access_token to the token right after signin
-    //   if (account) {
-    //     token.accessToken = account.access_token;
-    //     const url = `${process.env.NEXT_PUBLIC_API_URL}/api/auth/${account.provider}/callback?access_token=${account.access_token}`;
-    //     const res = await axios.get(url);
-    //     const { data } = res;
-    //     token.jwt = data.jwt;
-    //     token.id = data.user.id;
-    //   }
+    async jwt({ token, user, account, profile }) {
+      // Handle Credentials Log in
+      console.log(profile);
 
-    //   //runs if logging in by email
-    //   if (user && "jwt" in user) {
-    //     token.jwt = user.jwt;
-    //     token.id = user.id;
-    //   }
-
-    //   return token;
-    // },
-
-    async jwt({ token, user, account }) {
-      if (account && user) {
+      //handle credential login
+      if (account && account.type === "credentials" && user) {
         return {
           ...token,
           user: user.data,
@@ -80,11 +63,39 @@ export default NextAuth({
         };
       }
 
+      // Handle OAuth Provider Log in
+      if (account && user) {
+        token.providerImage = user.image;
+        token.name = user.name
+        //get database user
+        const res = await axios
+          .get(
+            `${process.env.NEXT_PUBLIC_API_URL}/api/auth/${account.provider}/callback?access_token=${account.access_token}`
+          )
+          .catch((error) => {
+            if (error.response) {
+              throw Error(error.response.data.error.message);
+            }
+          });
+        const { data } = res;
+
+        token.user = data.user;
+        
+        // Set user first and last name in database if this is the first time (google)
+        if (!token.user.firstName && profile.given_name){
+          const res = await axios.put(`${process.env.NEXT_PUBLIC_API_URL}/api/auth/local`)
+        }
+        
+          token.accessToken = data.jwt;
+
+      }
+
       return token;
     },
 
     async session({ session, token }) {
-      session.user = token.user;
+      session.user = { ...token.user, name: };
+      session.providerImage = token.providerImage;
       session.accessToken = token.accessToken;
       session.accessTokenExpires = token.accessTokenExpires;
 

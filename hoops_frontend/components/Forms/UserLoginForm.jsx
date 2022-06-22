@@ -53,27 +53,35 @@ function UserLoginForm() {
       >
         {({ isSubmitting }) => (
           <div className="grid place-items-center w-full h-full mt-2">
-            <Form className="w-80 sm:w-96 shadow-xl bg-base-300 card p-4 ">
-              <section className="user-register">
-                <h2 className="text-2xl text-center my-2">Login</h2>
-                <div className="grid gap-2 mb-4">
-                  <TextInput
-                    label="Email"
-                    name="email"
-                    placeholder="john.doe@example.com"
-                  />
-                  <TextInput type="password" label="Password" name="password" />
-                </div>
-                <button
-                  type="submit"
-                  className="mb-2 btn border-none bg-gradient-to-br text-gray-800 from-success to-accent btn-block"
-                >
-                  {isSubmitting ? (
-                    <i className="fas text-3xl fa-circle-notch fa-spin"></i>
-                  ) : (
-                    "Login"
-                  )}
-                </button>
+            <div className="w-80 sm:w-96 shadow-xl bg-base-300 card p-4 ">
+              <Form>
+                <section className="login-form">
+                  <h2 className="text-2xl text-center my-2">Login</h2>
+                  <div className="grid gap-2 mb-4">
+                    <TextInput
+                      label="Email"
+                      name="email"
+                      placeholder="john.doe@example.com"
+                    />
+                    <TextInput
+                      type="password"
+                      label="Password"
+                      name="password"
+                    />
+                  </div>
+                  <button
+                    type="submit"
+                    className="mb-2 btn border-none bg-gradient-to-br text-gray-800 from-success to-accent btn-block"
+                  >
+                    {isSubmitting ? (
+                      <i className="fas text-3xl fa-circle-notch fa-spin"></i>
+                    ) : (
+                      "Login"
+                    )}
+                  </button>
+                </section>
+              </Form>
+              <section className="oauth-providers">
                 <div className="divider">OR SIGN IN WITH</div>
                 <div className="flex justify-center gap-2">
                   <button
@@ -99,7 +107,7 @@ function UserLoginForm() {
                   </Link>
                 </small>
               </section>
-            </Form>
+            </div>
           </div>
         )}
       </Formik>
